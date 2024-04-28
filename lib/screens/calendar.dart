@@ -64,7 +64,7 @@ class _CalendarPageState extends State<CalendarPage> {
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: const Text("Календарь"),
-          actions: [Keycloak.loginButton],
+          actions: [Keycloak.loginButton(context)],
         ),
         body: Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(24, 16, 16, 0),

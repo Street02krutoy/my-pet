@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_pet/screens/subscreens/add_event.dart';
 import 'package:my_pet/screens/subscreens/components/animal_records.dart';
 import 'package:my_pet/screens/subscreens/components/info_box.dart';
 import 'package:my_pet/screens/subscreens/pet_creating.dart';
+import 'package:my_pet/screens/subscreens/pet_edit.dart';
 
 import '../../classes/pet_class.dart';
 import '../../global.dart';
@@ -42,7 +44,7 @@ class _PetInfoPageState extends State<PetInfoPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => PetCreatePage(
+                      builder: (context) => PetEditPage(
                           title: "Изменение",
                           pet: pet,
                           callbackParent: callback,
@@ -50,6 +52,21 @@ class _PetInfoPageState extends State<PetInfoPage> {
                 );
               },
               icon: const Icon(Icons.edit),
+              iconSize: 32,
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => AddEvent(
+                          firstDate: DateTime.now(),
+                          pet: pet,
+                          lastDate: DateTime.now().add(Duration(days: 365)),
+                          callbackParent: callback)),
+                );
+              },
+              icon: const Icon(Icons.add),
               iconSize: 32,
             ),
             IconButton(

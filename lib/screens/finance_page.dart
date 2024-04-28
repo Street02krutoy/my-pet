@@ -67,7 +67,7 @@ class _FinancePageWidgetState extends State<FinancePageWidget> {
               icon: const Icon(Icons.add),
               iconSize: 32,
             ),
-            Keycloak.loginButton
+            Keycloak.loginButton(context)
           ],
         ),
         body: Padding(

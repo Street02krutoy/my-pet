@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_pet/screens/subscreens/choose_clinic.dart';
 import '../../classes/pet_class.dart';
 import '../../global.dart';
 import '../../utils/AnimalType.dart';
@@ -6,13 +7,13 @@ import 'package:image_picker/image_picker.dart';
 
 ImagePicker picker = ImagePicker();
 
-class PetCreatePage extends StatefulWidget {
+class PetEditPage extends StatefulWidget {
   final String title;
   final Pet pet;
   final Function callbackParent;
   final Function callbackMain;
 
-  const PetCreatePage(
+  const PetEditPage(
       {super.key,
       required this.title,
       required this.pet,
@@ -20,10 +21,10 @@ class PetCreatePage extends StatefulWidget {
       required this.callbackMain});
 
   @override
-  State<PetCreatePage> createState() => _PetCreatePageState();
+  State<PetEditPage> createState() => _PetEditPageState();
 }
 
-class _PetCreatePageState extends State<PetCreatePage> {
+class _PetEditPageState extends State<PetEditPage> {
   void _savePet() {
     if (pet.name == '') {
       gPets.add(pet);
@@ -110,17 +111,36 @@ class _PetCreatePageState extends State<PetCreatePage> {
                               });
                             },
                           ),
-                          TextFormField(
-                            onChanged: (text) {
-                              //newPetName = text;
+                          DropdownButton<String>(
+                            items: <String>[
+                              'Порода 1',
+                              'Порода 2',
+                              'Порода 3',
+                              'Порода 4'
+                            ].map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            dropdownColor: Colors.white,
+                            value: null,
+                            onChanged: (newValue) {
+                              setState(() {
+                                //_selectedAnimal = newValue!;
+                              });
                             },
-                            decoration: const InputDecoration(
-                              hintText: "Порода...",
-                            ),
-                            initialValue: pet.name,
-                            maxLines: 1,
-                            minLines: 1,
-                          )
+                          ),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ChooseClinic(
+                                          callbackParent: callback)),
+                                );
+                              },
+                              child: Text("Выбрать клинику"))
                         ]),
                   ],
                 )),
@@ -133,5 +153,9 @@ class _PetCreatePageState extends State<PetCreatePage> {
         child: const Icon(Icons.save),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  callback() {
+    setState(() {});
   }
 }

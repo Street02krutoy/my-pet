@@ -24,7 +24,7 @@ class _PetMainPageState extends State<PetMainPage> {
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: const Text("Питомцы"),
-          actions: [Keycloak.loginButton],
+          actions: [Keycloak.loginButton(context)],
         ),
         body: Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(24, 16, 16, 0),

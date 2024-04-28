@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_pet/screens/calendar.dart';
 import 'package:my_pet/screens/finance_page.dart';
 import 'package:my_pet/screens/house_page.dart';
+import 'package:my_pet/screens/test.dart';
 import 'package:my_pet/services/notifi_service.dart';
 
 import 'global.dart';
@@ -27,8 +28,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -61,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     const HousePage(),
     const CalendarPage(),
     const FinancePageWidget(),
+    const MyWidget(),
   ];
 
   refresh() {
@@ -96,18 +96,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: Icon(Icons.attach_money_outlined),
                 selectedIcon: Icon(Icons.attach_money),
                 label: 'Финансы'),
+            NavigationDestination(
+                icon: Icon(Icons.attach_money_outlined),
+                selectedIcon: Icon(Icons.attach_money),
+                label: 'Финансы'),
           ],
         ),
         body: widgets[index]);
   }
 }
-
-
-// initialRoute: '/',
-// routes: {
-//   // When navigating to the "/" route, build the FirstScreen widget.
-//   '/': (context) => const MyHomePage(title: "home",),
-//   // When navigating to the "/second" route, build the SecondScreen widget.
-//   '/second': (context) => const SecondScreen(),
-// }
-
